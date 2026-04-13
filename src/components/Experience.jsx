@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const experiences = [
   {
@@ -7,7 +7,7 @@ const experiences = [
     company: "JPMorgan Chase & Co.",
     date: "June 2025 · 24-hour Hackathon",
     desc: "Selected among national applicants. Sole frontend developer — owned all React UI, role-based dashboards, chatbot UI, Razorpay flows, and multi-mode auth (Google OAuth + OTP + email). Delivered a fully functional live platform in 24 hours.",
-    color: "#2563eb",
+    color: "#1e3a5f",
   },
   {
     logo: "NG",
@@ -15,56 +15,50 @@ const experiences = [
     company: "Solid NGO — Kash College",
     date: "July 2025 – October 2025",
     desc: "Building a production MERN + EJS platform to digitize operations for 500+ stakeholders. Full ownership of frontend architecture — designed 8+ interactive React data-visualization components.",
-    color: "#0f6e56",
+    color: "#0d9488",
   },
 ];
 
-function ExpCard({ exp }) {
-  const [h, setH] = useState(false);
-  return (
-    <div
-      onMouseEnter={() => setH(true)}
-      onMouseLeave={() => setH(false)}
-      style={{
-        background: h ? "#ffffff" : "#f8fafc",
-        border: h ? "1px solid #e2e8f0" : "1px solid #e2e8f0",
-        borderRadius: "12px",
-        padding: "24px",
-        marginBottom: "16px",
-        display: "flex",
-        gap: "20px",
-        alignItems: "flex-start",
-        transform: h ? "translateY(-3px)" : "translateY(0)",
-        boxShadow: h ? "0 6px 24px #00000010" : "none",
-        transition: "all 0.2s",
-      }}
-    >
-      <div style={{
-        width: "46px", height: "46px", borderRadius: "10px",
-        background: exp.color + "18", border: `1px solid ${exp.color}44`,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: "13px", fontWeight: "800", color: exp.color, flexShrink: 0,
-      }}>
-        {exp.logo}
-      </div>
-      <div style={{ flex: 1 }}>
-        <div style={{ fontSize: "15px", fontWeight: "700", color: "#0f172a" }}>{exp.title}</div>
-        <div style={{ fontSize: "13px", color: "#2563eb", fontWeight: "600", marginTop: "2px" }}>{exp.company}</div>
-        <div style={{ fontSize: "11px", color: "#94a3b8", marginTop: "3px" }}>{exp.date}</div>
-        <p style={{ fontSize: "13px", color: "#475569", marginTop: "10px", lineHeight: "1.7" }}>{exp.desc}</p>
-      </div>
-    </div>
-  );
-}
-
 export default function Experience() {
   return (
-    <section id="experience" style={{ background: "#ffffff", padding: "56px 60px", borderBottom: "1px solid #e2e8f0" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "36px" }}>
-        <h2 style={{ fontSize: "22px", fontWeight: "800", color: "#0f172a" }}>Experience</h2>
-        <div style={{ flex: 1, height: "1px", background: "#e2e8f0" }} />
+    <section
+      id="experience"
+      className="section section--surface"
+      aria-labelledby="experience-heading"
+    >
+      <div className="section__inner">
+        <header className="section-head">
+          <span className="section-head__eyebrow">04</span>
+          <h2 id="experience-heading" className="section-head__title">
+            Experience
+          </h2>
+          <div className="section-head__line" aria-hidden />
+        </header>
+        <div className="exp-grid">
+          {experiences.map((exp) => (
+            <article key={exp.title} className="exp-card">
+              <div className="exp-card__top">
+                <div
+                  className="exp-card__logo"
+                  style={{
+                    background: `${exp.color}14`,
+                    borderColor: `${exp.color}44`,
+                    color: exp.color,
+                  }}
+                >
+                  {exp.logo}
+                </div>
+                <div className="exp-card__meta">
+                  <h3 className="exp-card__title">{exp.title}</h3>
+                  <div className="exp-card__company">{exp.company}</div>
+                  <div className="exp-card__date">{exp.date}</div>
+                </div>
+              </div>
+              <p className="exp-card__desc">{exp.desc}</p>
+            </article>
+          ))}
+        </div>
       </div>
-      {experiences.map((exp) => <ExpCard key={exp.title} exp={exp} />)}
     </section>
   );
 }
