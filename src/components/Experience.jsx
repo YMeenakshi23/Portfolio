@@ -1,67 +1,70 @@
-import { motion } from "framer-motion";
+import React, { useState } from "react";
 
-export default function Experience() {
+const experiences = [
+  {
+    logo: "JP",
+    title: "Full Stack Developer — Code for Good 2025",
+    company: "JPMorgan Chase & Co.",
+    date: "June 2025 · 24-hour Hackathon",
+    desc: "Selected among national applicants. Sole frontend developer — owned all React UI, role-based dashboards, chatbot UI, Razorpay flows, and multi-mode auth (Google OAuth + OTP + email). Delivered a fully functional live platform in 24 hours.",
+    color: "#2563eb",
+  },
+  {
+    logo: "NG",
+    title: "Web Developer",
+    company: "Solid NGO — Kash College",
+    date: "July 2025 – October 2025",
+    desc: "Building a production MERN + EJS platform to digitize operations for 500+ stakeholders. Full ownership of frontend architecture — designed 8+ interactive React data-visualization components.",
+    color: "#0f6e56",
+  },
+];
+
+function ExpCard({ exp }) {
+  const [h, setH] = useState(false);
   return (
-    <section id="experience">
-      <h2>Experience</h2>
-
-      <div className="grid">
-        {/* EXPERIENCE 1 */}
-        <motion.div
-          className="glass card"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h3>Web Developer</h3>
-          <p style={styles.org}>Solid NGO • Kash College</p>
-          <p style={styles.time}>July 2025 – Present</p>
-
-          <p style={styles.desc}>
-            Working on production-ready web applications to digitize NGO and
-            college operations. Focused on building scalable MERN solutions,
-            clean UI components, and interactive dashboards used by real users.
-          </p>
-        </motion.div>
-
-        {/* EXPERIENCE 2 */}
-        <motion.div
-          className="glass card"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-        >
-          <h3>Full Stack Developer</h3>
-          <p style={styles.org}>Code for Good • JPMorgan Chase & Co.</p>
-          <p style={styles.time}>June 2025</p>
-
-          <p style={styles.desc}>
-            Built an Agri-tech platform for an NGO under tight deadlines,
-            implementing OTP login, Google OAuth, real-time features, and
-            dashboards. Collaborated in a high-pressure hackathon environment
-            to deliver a working solution.
-          </p>
-        </motion.div>
+    <div
+      onMouseEnter={() => setH(true)}
+      onMouseLeave={() => setH(false)}
+      style={{
+        background: h ? "#ffffff" : "#f8fafc",
+        border: h ? "1px solid #e2e8f0" : "1px solid #e2e8f0",
+        borderRadius: "12px",
+        padding: "24px",
+        marginBottom: "16px",
+        display: "flex",
+        gap: "20px",
+        alignItems: "flex-start",
+        transform: h ? "translateY(-3px)" : "translateY(0)",
+        boxShadow: h ? "0 6px 24px #00000010" : "none",
+        transition: "all 0.2s",
+      }}
+    >
+      <div style={{
+        width: "46px", height: "46px", borderRadius: "10px",
+        background: exp.color + "18", border: `1px solid ${exp.color}44`,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        fontSize: "13px", fontWeight: "800", color: exp.color, flexShrink: 0,
+      }}>
+        {exp.logo}
       </div>
-    </section>
+      <div style={{ flex: 1 }}>
+        <div style={{ fontSize: "15px", fontWeight: "700", color: "#0f172a" }}>{exp.title}</div>
+        <div style={{ fontSize: "13px", color: "#2563eb", fontWeight: "600", marginTop: "2px" }}>{exp.company}</div>
+        <div style={{ fontSize: "11px", color: "#94a3b8", marginTop: "3px" }}>{exp.date}</div>
+        <p style={{ fontSize: "13px", color: "#475569", marginTop: "10px", lineHeight: "1.7" }}>{exp.desc}</p>
+      </div>
+    </div>
   );
 }
 
-const styles = {
-  org: {
-    color: "#38bdf8",
-    fontWeight: "600",
-    marginTop: "6px",
-  },
-  time: {
-    color: "#94a3b8",
-    fontSize: "14px",
-    marginBottom: "12px",
-  },
-  desc: {
-    color: "#cbd5f5",
-    lineHeight: "1.7",
-  },
-};
+export default function Experience() {
+  return (
+    <section id="experience" style={{ background: "#ffffff", padding: "56px 60px", borderBottom: "1px solid #e2e8f0" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "36px" }}>
+        <h2 style={{ fontSize: "22px", fontWeight: "800", color: "#0f172a" }}>Experience</h2>
+        <div style={{ flex: 1, height: "1px", background: "#e2e8f0" }} />
+      </div>
+      {experiences.map((exp) => <ExpCard key={exp.title} exp={exp} />)}
+    </section>
+  );
+}
