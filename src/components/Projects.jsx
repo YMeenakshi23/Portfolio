@@ -13,7 +13,7 @@ const projects = [
       "JWT",
       "Gemini API",
     ],
-    github: "https://github.com/YMeenakshi23/CarbonFootprint-Tracker",
+    github: "https://github.com/YMeenakshi23",
     live: "https://carbon-footprint-tracker-swart.vercel.app/",
   },
   {
