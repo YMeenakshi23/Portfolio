@@ -2,6 +2,21 @@ import React from "react";
 
 const projects = [
   {
+    badge: "INFOSYS SPRINGBOARD 7.0",
+    title: "Carbon Footprint Tracker",
+    desc: "Full-stack sustainability analytics platform with separate user, organization (CSR), and admin modules. Real-time emission engine, analytics dashboards, goals, badges & leaderboard. Secured with Spring Security 6 JWT, Google OAuth, and email-OTP reset. Includes EcoBot (Gemini AI assistant), multi-language support, and an installable PWA.",
+    tech: [
+      "React.js",
+      "Spring Boot",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "JWT",
+      "Gemini API",
+    ],
+    github: "https://github.com/YMeenakshi23/CarbonFootprint-Tracker",
+    live: "https://carbon-footprint-tracker-swart.vercel.app/",
+  },
+  {
     badge: "JPMORGAN CODE FOR GOOD",
     title: "CML's Barn Live",
     desc: "Agri-tech platform for NGO CML — full frontend ownership. Role-based access for 3 user types, OTP + Google OAuth login, real-time chat, Razorpay donations, SMS crop alerts & data dashboards. Delivered in a 24-hour sprint.",
@@ -15,14 +30,6 @@ const projects = [
     ],
     github: "https://github.com/YMeenakshi23",
     live: "https://cfg-hyd-2025-jpmc.vercel.app/",
-  },
-  {
-    badge: "FULL STACK · SPRING BOOT",
-    title: "Zakishi — Cybersecurity Job Portal",
-    desc: "Secured RESTful API for a cybersecurity-focused job portal. Full job lifecycle: post, search, apply, and track. Spring Boot backend + React SPA + MongoDB with CEH-aligned security practices.",
-    tech: ["Spring Boot", "React.js", "Java", "MongoDB", "REST API"],
-    github: null,
-    live: "https://zakishi.onrender.com/",
   },
 ];
 
